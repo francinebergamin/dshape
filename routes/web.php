@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\MeasurementsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('measurements/home');
 });
+
+Route::get('/measurements', [MeasurementsController::class,'index']);
+
+Route::get('/measurements/new', function () {
+    return view('measurements/form');
+});
+
+Route::post('/measurements/new',[MeasurementsController::class,'store']);
